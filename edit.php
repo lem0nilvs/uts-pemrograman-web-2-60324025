@@ -75,7 +75,7 @@
             $errors[] = "Status tidak valid";
         }
 
-        // cek duplikasi (exclude diri sendiri)
+        // cek duplikasi
         if (empty($errors)) {
             $check = $conn->prepare("SELECT id_kategori FROM kategori WHERE kode_kategori = ? AND id_kategori != ?");
             $check->bind_param("si", $kode, $id);
@@ -110,7 +110,7 @@
                         <h4>Edit Kategori</h4>
                     </div>
                     <div class="card-body">
-                        <!-- TODO: Form dengan data pre-filled -->
+                        <!-- form dengan data pre-filled -->
                         <?php if (!empty($errors)): ?>
                             <div class="alert alert-danger">
                                 <ul class="mb-0">

@@ -1,7 +1,7 @@
 <?php
 require_once 'config/database.php';
  
-// TODO: Validasi ID dari GET
+// validasi ID dari GET
 $id = $_GET['id'] ?? '';
 
 if (empty($id)) {
@@ -9,7 +9,7 @@ if (empty($id)) {
     exit;
 }
 
-// TODO: Cek keberadaan data
+// validasi keberadaan data
 $cek = $conn->prepare("SELECT id_kategori FROM kategori WHERE id_kategori = ?");
 $cek->bind_param("i", $id);
 $cek->execute();
@@ -20,12 +20,12 @@ if ($result->num_rows == 0) {
     exit;
 }
 
-// TODO: Delete data
+// delete data
 $delete = $conn->prepare("DELETE FROM kategori WHERE id_kategori = ?");
 $delete->bind_param("i", $id);
 $delete->execute();
 
-// TODO: Redirect dengan pesan
+// validasi redirect dengan pesan
 if ($delete->affected_rows > 0) {
     header("Location: index.php?success=Data berhasil dihapus");
 } else {
